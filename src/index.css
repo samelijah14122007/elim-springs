@@ -1,0 +1,491 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+/* ========================================================
+   ELIM SPRINGS — Centralized Light Design System
+   SIH 2026 PS 26015 | From Field Voices to Watershed Action
+   ======================================================== */
+
+:root {
+  /* Government / Environmental Geospatial Light Palette */
+  --color-bg-base: #F7F8F4;        /* Warm off-white page background */
+  --color-surface: #FFFFFF;        /* Crisp white primary surface */
+  --color-surface-secondary: #F0F3EE; /* Subtle warm grey secondary surface */
+  --color-primary-green: #075B45;   /* Deep Forest Green - branding, primary buttons, headings */
+  --color-secondary-green: #0E8065; /* Teal / Mid green - secondary actions, active badges */
+  --color-water: #1677A8;          /* Water / Hydrology / Satellite Blue */
+  --color-earth: #8A6A3F;          /* Soil / Terracotta / Earth Brown */
+  --color-warning: #B7791F;        /* Muted Amber Warning */
+  --color-critical: #B42318;       /* Deep Red Critical Alert */
+  --color-text: #17211D;           /* High-contrast charcoal/dark text */
+  --color-text-muted: #66736C;     /* Subtle muted slate text */
+  --color-border: #DCE3DD;         /* Soft light grey-green border */
+  
+  --radius-card: 12px;
+  --radius-btn: 8px;
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-elevated: 0 4px 16px -2px rgba(0, 0, 0, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-bg-base);
+    color: var(--color-text);
+    font-family: 'Inter', 'Noto Sans', 'Nirmala UI', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  ::selection {
+    background-color: rgba(7, 91, 69, 0.15);
+    color: #075B45;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', 'Noto Sans', 'Nirmala UI', sans-serif;
+    letter-spacing: -0.015em;
+    color: var(--color-text);
+    font-weight: 700;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  }
+}
+
+/* ── RTL Direction Rules ────────────────────────── */
+[dir="rtl"] {
+  text-align: right;
+}
+[dir="rtl"] .ltr-force {
+  direction: ltr;
+  text-align: left;
+}
+
+/* ── Clean Light Scrollbars ─────────────────────── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* ── Panel Styles (Light GIS & Admin Shell) ──────── */
+.command-panel {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+}
+
+.command-panel-glow {
+  background: #FFFFFF;
+  border: 1px solid #075B45;
+  box-shadow: 0 0 16px -4px rgba(7, 91, 69, 0.15), var(--shadow-card);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+}
+
+.glass-panel-elevated {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-elevated);
+}
+
+/* ── Geospatial Grid Texture ────────────────────── */
+.geospatial-grid {
+  background-image:
+    linear-gradient(to right, rgba(220, 227, 221, 0.4) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(220, 227, 221, 0.4) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* ── Reusable Component Classes ─────────────────── */
+.elim-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.elim-card:hover {
+  border-color: #B2C2B5;
+  box-shadow: var(--shadow-elevated);
+}
+
+.elim-card-interactive {
+  cursor: pointer;
+}
+
+.elim-card-interactive:hover {
+  border-color: var(--color-primary-green);
+  box-shadow: 0 4px 12px rgba(7, 91, 69, 0.08);
+  transform: translateY(-1px);
+}
+
+.elim-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  background: var(--color-primary-green);
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  border-radius: var(--radius-btn);
+  border: none;
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: 0 1px 2px rgba(7, 91, 69, 0.2);
+}
+
+.elim-btn-primary:hover {
+  background: #064E3B;
+  box-shadow: 0 3px 8px rgba(7, 91, 69, 0.25);
+  transform: translateY(-1px);
+}
+
+.elim-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  background: #FFFFFF;
+  color: var(--color-text);
+  font-weight: 500;
+  font-size: 0.8125rem;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.elim-btn-secondary:hover {
+  background: var(--color-surface-secondary);
+  border-color: #CBD5E1;
+  color: #075B45;
+}
+
+.elim-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.15rem 0.55rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  border-width: 1px;
+  border-style: solid;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+/* ── Light Status Badges ────────────────────────── */
+.status-verified {
+  background: rgba(7, 91, 69, 0.08);
+  color: #075B45;
+  border-color: rgba(7, 91, 69, 0.25);
+}
+
+.status-pending {
+  background: rgba(183, 121, 31, 0.08);
+  color: #B7791F;
+  border-color: rgba(183, 121, 31, 0.25);
+}
+
+.status-critical {
+  background: rgba(180, 35, 24, 0.08);
+  color: #B42318;
+  border-color: rgba(180, 35, 24, 0.25);
+}
+
+.status-info {
+  background: rgba(22, 119, 168, 0.08);
+  color: #1677A8;
+  border-color: rgba(22, 119, 168, 0.25);
+}
+
+.status-neutral {
+  background: #F1F5F9;
+  color: #475569;
+  border-color: #CBD5E1;
+}
+
+/* ── Leaflet Clean Light Theme Overrides ─────────── */
+.leaflet-container {
+  background-color: #E2E8F0 !important;
+  font-family: 'Inter', sans-serif !important;
+  width: 100%;
+  height: 100%;
+}
+
+.leaflet-popup-content-wrapper {
+  background: #FFFFFF !important;
+  color: #17211D !important;
+  border-radius: 10px !important;
+  border: 1px solid #DCE3DD !important;
+  box-shadow: 0 10px 25px -4px rgba(0, 0, 0, 0.1) !important;
+  padding: 4px !important;
+}
+
+.leaflet-popup-tip {
+  background: #FFFFFF !important;
+}
+
+.leaflet-bar a {
+  background-color: #FFFFFF !important;
+  border-color: #DCE3DD !important;
+  color: #334155 !important;
+}
+
+.leaflet-bar a:hover {
+  background-color: #F8FAFC !important;
+  color: #075B45 !important;
+}
+
+.leaflet-control-attribution {
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #64748B !important;
+  font-size: 10px !important;
+  border-radius: 6px 0 0 0 !important;
+  border: 1px solid #E2E8F0 !important;
+}
+
+.leaflet-control-attribution a {
+  color: #075B45 !important;
+  text-decoration: none !important;
+}
+
+/* ── Clean Animations ───────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseRing {
+  0%   { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(7, 91, 69, 0.4); }
+  70%  { transform: scale(1);    box-shadow: 0 0 0 6px rgba(7, 91, 69, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(7, 91, 69, 0); }
+}
+
+.animate-fade-in  { animation: fadeIn 0.2s ease forwards; }
+.animate-slide-up { animation: slideUp 0.25s ease forwards; }
+.animate-pulse-ring { animation: pulseRing 2s infinite; }
+
+/* ── Focus Rings ────────────────────────────────── */
+*:focus-visible {
+  outline: 2px solid #075B45;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ========================================================
+   ELIM SPRINGS — Institutional Dark Theme Engine
+   ======================================================== */
+
+html.dark {
+  color-scheme: dark;
+}
+
+html.dark body {
+  background-color: #0B1117 !important;
+  color: #F1F5F9 !important;
+}
+
+/* Base surface inversions for dark theme */
+html.dark .bg-white {
+  background-color: #141E28 !important;
+}
+
+html.dark .bg-white\/95 {
+  background-color: rgba(20, 30, 40, 0.95) !important;
+}
+
+html.dark .bg-white\/80 {
+  background-color: rgba(20, 30, 40, 0.8) !important;
+}
+
+html.dark .bg-white\/60 {
+  background-color: rgba(20, 30, 40, 0.6) !important;
+}
+
+html.dark .bg-\[\#F7F8F4\] {
+  background-color: #0B1117 !important;
+}
+
+html.dark .bg-\[\#F0F3EE\] {
+  background-color: #1A2634 !important;
+}
+
+html.dark .bg-\[\#EAF1ED\] {
+  background-color: #182823 !important;
+}
+
+html.dark .text-\[\#17211D\] {
+  color: #F1F5F9 !important;
+}
+
+html.dark .text-\[\#66736C\] {
+  color: #94A3B8 !important;
+}
+
+html.dark .border-\[\#DCE3DD\] {
+  border-color: #243242 !important;
+}
+
+html.dark .border-\[\#CBD5E1\] {
+  border-color: #334155 !important;
+}
+
+html.dark .border-slate-200,
+html.dark .border-slate-300 {
+  border-color: #243242 !important;
+}
+
+/* High contrast inputs and controls in dark mode */
+html.dark input:not([type="checkbox"]):not([type="radio"]),
+html.dark select,
+html.dark textarea {
+  background-color: #141E28 !important;
+  color: #F1F5F9 !important;
+  border-color: #243242 !important;
+}
+
+html.dark input:focus,
+html.dark select:focus,
+html.dark textarea:focus {
+  border-color: #10B981 !important;
+  box-shadow: 0 0 0 1px #10B981 !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #64748B !important;
+}
+
+/* Dark mode panel classes */
+html.dark .command-panel {
+  background: #141E28 !important;
+  border-color: #243242 !important;
+}
+
+html.dark .command-panel-glow {
+  background: #141E28 !important;
+  border-color: #10B981 !important;
+  box-shadow: 0 0 20px -4px rgba(16, 185, 129, 0.25), var(--shadow-card) !important;
+}
+
+html.dark .glass-panel {
+  background: rgba(20, 30, 40, 0.95) !important;
+  border-color: #243242 !important;
+}
+
+/* Dark mode scrollbars */
+html.dark ::-webkit-scrollbar-thumb {
+  background: #334155 !important;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569 !important;
+}
+
+/* Dark mode Leaflet cartographic overrides */
+html.dark .leaflet-container {
+  background-color: #0B1117 !important;
+}
+
+html.dark .leaflet-popup-content-wrapper {
+  background: #141E28 !important;
+  color: #F1F5F9 !important;
+  border-color: #243242 !important;
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.6) !important;
+}
+
+html.dark .leaflet-popup-tip {
+  background: #141E28 !important;
+}
+
+html.dark .leaflet-bar a {
+  background-color: #141E28 !important;
+  border-color: #243242 !important;
+  color: #CBD5E1 !important;
+}
+
+html.dark .leaflet-bar a:hover {
+  background-color: #1A2634 !important;
+  color: #10B981 !important;
+}
+
+html.dark .leaflet-control-attribution {
+  background: rgba(20, 30, 40, 0.9) !important;
+  color: #94A3B8 !important;
+  border-color: #243242 !important;
+}
+
+html.dark .leaflet-control-attribution a {
+  color: #10B981 !important;
+}
+
+/* Dark mode buttons */
+html.dark .elim-btn-secondary {
+  background-color: #1A2634 !important;
+  color: #F1F5F9 !important;
+  border-color: #243242 !important;
+}
+
+html.dark .elim-btn-secondary:hover {
+  background-color: #243242 !important;
+}
+
+/* Dark status badges */
+html.dark .status-verified {
+  background: rgba(16, 185, 129, 0.15) !important;
+  color: #34D399 !important;
+  border-color: rgba(16, 185, 129, 0.35) !important;
+}
+
+html.dark .status-pending {
+  background: rgba(245, 158, 11, 0.15) !important;
+  color: #FBBF24 !important;
+  border-color: rgba(245, 158, 11, 0.35) !important;
+}
+
+html.dark .status-critical {
+  background: rgba(244, 63, 94, 0.15) !important;
+  color: #FB7185 !important;
+  border-color: rgba(244, 63, 94, 0.35) !important;
+}
+
+html.dark .status-info {
+  background: rgba(56, 189, 248, 0.15) !important;
+  color: #7DD3FC !important;
+  border-color: rgba(56, 189, 248, 0.35) !important;
+}
+
+html.dark .status-neutral {
+  background: #1E293B !important;
+  color: #CBD5E1 !important;
+  border-color: #334155 !important;
+}
