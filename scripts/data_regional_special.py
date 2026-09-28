@@ -1,0 +1,183 @@
+# ==============================================================================
+# ELIM SPRINGS — SPECIAL REGIONAL SCRIPTS (mni, sd, ks, sat)
+# Manipuri (Meitei), Sindhi (RTL), Kashmiri (RTL), Santali (Ol Chiki)
+# ==============================================================================
+
+import json
+import os
+import copy
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+hi = json.load(open(os.path.join(SCRIPT_DIR, 'hi.json'), encoding='utf-8'))
+from data_pa_ur_or_as import PA_UR_OR_AS_TRANSLATIONS
+
+ur = PA_UR_OR_AS_TRANSLATIONS['ur']
+bn = json.load(open(os.path.join(SCRIPT_DIR, 'en.json'), encoding='utf-8')) # fallback base
+
+REGIONAL_SPECIAL_TRANSLATIONS = {}
+
+# 1. Sindhi (sd - Arabic script RTL, closely cognate to Urdu/Sindhi admin terms)
+sd_dict = copy.deepcopy(ur)
+sd_dict['header']['title'] = 'ايلم اسپرنگس (ELIM SPRINGS)'
+sd_dict['header']['tagline'] = 'کيتن جي آواز کان واٽرشڊ عمل تائين'
+sd_dict['header']['selectCatchment'] = 'طاس چونڊيو'
+sd_dict['header']['selectRole'] = 'صارف جو ڪردار'
+sd_dict['header']['selectLanguage'] = 'ٻولي'
+sd_dict['header']['searchPlaceholder'] = 'اثاثا، ڪيس، ڳوٺ ڳوليو...'
+sd_dict['header']['quickReportPhoto'] = 'تصوير اپلوڊ ڪريو'
+sd_dict['header']['searchLanguage'] = '23 هندستاني ٻوليون ڳوليو...'
+sd_dict['header']['changeLanguage'] = 'ٻولي تبديل ڪريو'
+sd_dict['dashboard']['title'] = 'ايگزيڪيوٽو واٽرشڊ ڊيش بورڊ'
+sd_dict['dashboard']['fieldVoicesToWatershedAction'] = 'کيتن جي آواز کان واٽرشڊ عمل تائين'
+sd_dict['dashboard']['monitoredCatchments'] = 'نگراني هيٺ واٽرشڊ'
+sd_dict['dashboard']['activeWatersheds'] = 'فعال واٽرشڊ'
+sd_dict['dashboard']['activeStructures'] = 'پاڻي بچاءَ جا اثاثا'
+sd_dict['dashboard']['openCases'] = 'کليل ڪيس'
+sd_dict['dashboard']['fieldVerifications'] = 'زميني تصديقون'
+sd_dict['dashboard']['evidenceRecords'] = 'ثبوتن جو رڪارڊ'
+sd_dict['dashboard']['priorityCases'] = 'ترجيحي ڪيس'
+sd_dict['dashboard']['recentEvidence'] = 'تازا ثبوت'
+sd_dict['dashboard']['workflowTitle'] = 'ثبوت ← تصديق ← عمل'
+sd_dict['common']['save'] = 'محفوظ ڪريو'
+sd_dict['common']['cancel'] = 'رد ڪريو'
+sd_dict['common']['close'] = 'بند ڪريو'
+sd_dict['common']['back'] = 'پوئتي'
+sd_dict['common']['next'] = 'اڳتي'
+sd_dict['common']['view'] = 'ڏسو'
+sd_dict['common']['search'] = 'ڳوليو'
+sd_dict['common']['submit'] = 'جمع ڪريو'
+sd_dict['common']['confirm'] = 'پڪ ڪريو'
+sd_dict['common']['yes'] = 'ها'
+sd_dict['common']['no'] = 'نه'
+sd_dict['common']['state'] = 'صوبو / رياست'
+sd_dict['common']['district'] = 'ضلعو'
+sd_dict['common']['village'] = 'ڳوٺ'
+REGIONAL_SPECIAL_TRANSLATIONS['sd'] = sd_dict
+
+# 2. Kashmiri (ks - Arabic script RTL)
+ks_dict = copy.deepcopy(ur)
+ks_dict['header']['title'] = 'ایلم اسپرنگس (ELIM SPRINGS)'
+ks_dict['header']['tagline'] = 'کؠتَن ہٕنٛز آواز پؠٹھٕ واٹرشیڈ عَمَل تام'
+ks_dict['header']['selectCatchment'] = 'بیسِن چُنِو'
+ks_dict['header']['selectRole'] = 'کِردار'
+ks_dict['header']['selectLanguage'] = 'زَبان'
+ks_dict['header']['searchPlaceholder'] = 'جاگیر، کؠس، گام تَلآش کٔرِو...'
+ks_dict['header']['quickReportPhoto'] = 'فوٹو اَپ لوڈ کٔرِو'
+ks_dict['header']['searchLanguage'] = '23 ہِندوستٲنی زَبانہٕ تَلآش کٔرِو...'
+ks_dict['header']['changeLanguage'] = 'زَبان بَدلٲوِو'
+ks_dict['dashboard']['title'] = 'واٹرشیڈ اِنتِظامی ڈیش بورڈ'
+ks_dict['dashboard']['fieldVoicesToWatershedAction'] = 'کؠتَن ہٕنٛز آواز پؠٹھٕ واٹرشیڈ عَمَل تام'
+ks_dict['dashboard']['monitoredCatchments'] = 'نِگرٲنی ہٕنٛز جاے'
+ks_dict['dashboard']['activeWatersheds'] = 'سَرگَرَم واٹرشیڈ'
+ks_dict['dashboard']['activeStructures'] = 'آب بَچاو اثاثہٕ'
+ks_dict['dashboard']['openCases'] = 'کھولِتھ کؠس'
+ks_dict['dashboard']['fieldVerifications'] = 'زَمِینی تَصدِیق'
+ks_dict['dashboard']['evidenceRecords'] = 'ثَبوتَن ہُنٛد رِکارڈ'
+ks_dict['dashboard']['priorityCases'] = 'تَرجِیحی کؠس'
+ks_dict['dashboard']['recentEvidence'] = 'تازٕ ثَبوت'
+ks_dict['dashboard']['workflowTitle'] = 'ثَبوت ← تَصدِیق ← کٲم'
+ks_dict['common']['save'] = 'مَحفوظ کٔرِو'
+ks_dict['common']['cancel'] = 'مَنسوخ کٔرِو'
+ks_dict['common']['close'] = 'بَند کٔرِو'
+ks_dict['common']['back'] = 'پَتھ کُن'
+ks_dict['common']['next'] = 'برونٛہہ کُن'
+ks_dict['common']['view'] = 'وُچھِو'
+ks_dict['common']['search'] = 'تَلآش کٔرِو'
+ks_dict['common']['submit'] = 'دٲخِل کٔرِو'
+ks_dict['common']['confirm'] = 'یَقینی بَنٲوِو'
+ks_dict['common']['yes'] = 'آ'
+ks_dict['common']['no'] = 'نہٕ'
+ks_dict['common']['state'] = 'رِیاسَتھ'
+ks_dict['common']['district'] = 'ضِلہٕ'
+ks_dict['common']['village'] = 'گام'
+REGIONAL_SPECIAL_TRANSLATIONS['ks'] = ks_dict
+
+# 3. Manipuri (mni - Meitei / Bengali script)
+from data_pa_ur_or_as import PA_UR_OR_AS_TRANSLATIONS
+as_dict = PA_UR_OR_AS_TRANSLATIONS['as']
+mni_dict = copy.deepcopy(as_dict)
+mni_dict['header']['title'] = 'এলিম স্প্রিংস (ELIM SPRINGS)'
+mni_dict['header']['tagline'] = 'লমগী খোঞ্জেলদগী ঈশিং থুম্বা থবক ফাওবা'
+mni_dict['header']['selectCatchment'] = 'বেসিন খনবীয়ু'
+mni_dict['header']['selectRole'] = 'শীজিন্নরিবগী থৌদাং'
+mni_dict['header']['selectLanguage'] = 'লোল'
+mni_dict['header']['searchPlaceholder'] = 'পোৎলম, কেস, খুঙ্গং থীবীয়ু...'
+mni_dict['header']['quickReportPhoto'] = 'ফোতো অপলোদ তৌবীয়ু'
+mni_dict['header']['searchLanguage'] = '২৩ ভারতকী লোলশিং থীবীয়ু...'
+mni_dict['header']['changeLanguage'] = 'লোল হোংদোকপীয়ু'
+mni_dict['dashboard']['title'] = 'ঈশিং থুম্বা এক্সেক্যুতিভ দেশবোর্দ'
+mni_dict['dashboard']['fieldVoicesToWatershedAction'] = 'লমগী খোঞ্জেলদগী ঈশিং থুম্বা থবক ফাওবা'
+mni_dict['dashboard']['monitoredCatchments'] = 'য়েংশিল্লিবা লমদমশিং'
+mni_dict['dashboard']['activeWatersheds'] = 'হৌজিক চত্থরিবা ঈশিং থুম্বশিং'
+mni_dict['dashboard']['activeStructures'] = 'ঈশিং য়োকখৎপগী পোৎলমশিং'
+mni_dict['dashboard']['openCases'] = 'হাংদবা কেসশিং'
+mni_dict['dashboard']['fieldVerifications'] = 'ফিল্ড চপ চাবা থবক'
+mni_dict['dashboard']['evidenceRecords'] = 'প্রুফ রেকোর্দশিং'
+mni_dict['dashboard']['priorityCases'] = 'অহানবা থৌওংগী কেসশিং'
+mni_dict['dashboard']['recentEvidence'] = 'হৌজিক্কী প্রুফশিং'
+mni_dict['dashboard']['workflowTitle'] = 'প্রুফ → চপ চাবা → থবক'
+mni_dict['common']['save'] = 'কনবীয়ু'
+mni_dict['common']['cancel'] = 'তোকপীয়ু'
+mni_dict['common']['close'] = 'থিংবীয়ু'
+mni_dict['common']['back'] = 'হঞ্জিনবা'
+mni_dict['common']['next'] = 'মখা তাবা'
+mni_dict['common']['view'] = 'য়েংবীয়ু'
+mni_dict['common']['search'] = 'থীবীয়ু'
+mni_dict['common']['submit'] = 'পীথোকপীয়ু'
+mni_dict['common']['confirm'] = 'চপ চারে'
+mni_dict['common']['yes'] = 'হোই'
+mni_dict['common']['no'] = 'নত্তে'
+mni_dict['common']['state'] = 'ষ্টেট'
+mni_dict['common']['district'] = 'জিলা'
+mni_dict['common']['village'] = 'খুঙ্গং'
+REGIONAL_SPECIAL_TRANSLATIONS['mni'] = mni_dict
+
+# 4. Santali (sat - Ol Chiki script)
+sat_dict = copy.deepcopy(hi)
+sat_dict['nav']['landing'] = 'ᱢᱩᱬᱩᱛ ᱠᱟᱛᱷᱟ'
+sat_dict['nav']['dashboard'] = 'ᱢᱩᱬᱩᱛ ᱰᱮᱥᱵᱚᱨᱰ'
+sat_dict['nav']['gis'] = 'ᱫᱟᱜ ᱦᱟᱹᱴᱤᱧ ᱜᱤ.ᱟᱭ.ᱮᱥ (GIS)'
+sat_dict['nav']['satellite'] = 'ᱥᱮᱴᱮᱞᱟᱭᱤᱴ ᱧᱮᱞ'
+sat_dict['nav']['geoImages'] = 'ᱡᱤᱭᱳ-ᱴᱮᱜᱽ ᱪᱤᱛᱟᱹᱨ'
+sat_dict['nav']['ivr'] = 'ᱟᱭ.ᱵᱷᱤ.ᱟᱨ (IVR) ᱟᱲᱟᱝ ᱨᱤᱯᱚᱨᱴ'
+sat_dict['nav']['agent'] = 'ᱮ.ᱟᱭ ᱮᱡᱮᱱᱴ (AI Geo Agent)'
+sat_dict['nav']['rag'] = 'ᱜᱮᱭᱟᱱ ᱵᱟᱸᱰᱟᱨ (RAG)'
+sat_dict['nav']['cases'] = 'ᱥᱟᱹᱠᱷᱤ ᱟᱨ ᱠᱮᱥᱠᱚ'
+sat_dict['nav']['fieldVerification'] = 'ᱯᱷᱤᱞᱰ ᱯᱟᱹᱨᱠᱷᱟᱹᱣ'
+sat_dict['nav']['reports'] = 'ᱰᱤ.ᱯᱤ.ᱟᱨ ᱟᱨ ᱨᱤᱯᱚᱨᱴ'
+sat_dict['nav']['settings'] = 'ᱥᱟᱡᱟᱣ'
+sat_dict['header']['title'] = 'ᱮᱞᱤᱢ ᱥᱯᱨᱤᱝᱥ (ELIM SPRINGS)'
+sat_dict['header']['tagline'] = 'ᱠᱷᱮᱛ ᱨᱮᱭᱟᱜ ᱟᱲᱟᱝ ᱠᱷᱚᱱ ᱫᱟᱜ ᱦᱟᱹᱴᱤᱧ ᱠᱟᱹᱢᱤ ᱦᱟᱹᱵᱤᱡ'
+sat_dict['header']['selectCatchment'] = 'ᱵᱮᱥᱤᱱ ᱵᱟᱪᱷᱟᱣ'
+sat_dict['header']['selectRole'] = 'ᱵᱮᱵᱷᱟᱨᱤᱭᱟᱹ ᱴᱷᱟᱶ'
+sat_dict['header']['selectLanguage'] = 'ᱯᱟᱹᱨᱥᱤ'
+sat_dict['header']['searchPlaceholder'] = 'ᱥᱚᱢᱯᱚᱛᱤ, ᱠᱮᱥ, ᱟᱹᱛᱩ ᱯᱟᱱᱛᱷᱮ...'
+sat_dict['header']['quickReportPhoto'] = 'ᱪᱤᱛᱟᱹᱨ ᱟᱯᱞᱳᱰ'
+sat_dict['header']['searchLanguage'] = '᱒᱓ ᱜᱚᱴᱟᱝ ᱥᱤᱧᱚᱛᱤᱭᱟᱹ ᱯᱟᱹᱨᱥᱤ ᱯᱟᱱᱛᱷᱮ...'
+sat_dict['header']['changeLanguage'] = 'ᱯᱟᱹᱨᱥᱤ ᱵᱚᱫᱚᱞ'
+sat_dict['dashboard']['title'] = 'ᱠᱟᱹᱢᱤᱭᱟᱹ ᱫᱟᱜ ᱦᱟᱹᱴᱤᱧ ᱰᱮᱥᱵᱚᱨᱰ'
+sat_dict['dashboard']['fieldVoicesToWatershedAction'] = 'ᱠᱷᱮᱛ ᱨᱮᱭᱟᱜ ᱟᱲᱟᱝ ᱠᱷᱚᱱ ᱫᱟᱜ ᱦᱟᱹᱴᱤᱧ ᱠᱟᱹᱢᱤ ᱦᱟᱹᱵᱤᱡ'
+sat_dict['dashboard']['monitoredCatchments'] = 'ᱧᱮᱞ ᱫᱚᱦᱚ ᱮᱞᱟᱠᱟ'
+sat_dict['dashboard']['activeWatersheds'] = 'ᱪᱟᱹᱞᱩ ᱢᱮᱱᱟᱜ ᱫᱟᱜ ᱦᱟᱹᱴᱤᱧ'
+sat_dict['dashboard']['activeStructures'] = 'ᱫᱟᱜ ᱥᱟᱧᱪᱟᱣ ᱥᱚᱢᱯᱚᱛᱤ'
+sat_dict['dashboard']['openCases'] = 'ᱡᱷᱤᱡ ᱠᱮᱥᱠᱚ'
+sat_dict['dashboard']['fieldVerifications'] = 'ᱯᱷᱤᱞᱰ ᱯᱟᱹᱨᱠᱷᱟᱹᱣ'
+sat_dict['dashboard']['evidenceRecords'] = 'ᱥᱟᱹᱠᱷᱤ ᱨᱮᱠᱚᱨᱰ'
+sat_dict['dashboard']['priorityCases'] = 'ᱢᱟᱬᱟᱝ ᱠᱮᱥᱠᱚ'
+sat_dict['dashboard']['recentEvidence'] = 'ᱱᱟᱣᱟ ᱥᱟᱹᱠᱷᱤᱠᱚ'
+sat_dict['dashboard']['workflowTitle'] = 'ᱥᱟᱹᱠᱷᱤ → ᱯᱟᱹᱨᱠᱷᱟᱹᱣ → ᱠᱟᱹᱢᱤ'
+sat_dict['common']['save'] = 'ᱥᱟᱸᱪᱟᱣ'
+sat_dict['common']['cancel'] = 'ᱵᱟᱹᱛᱤᱞ'
+sat_dict['common']['close'] = 'ᱵᱚᱸᱫᱽ'
+sat_dict['common']['back'] = 'ᱛᱟᱭᱚᱢ'
+sat_dict['common']['next'] = 'ᱞᱟᱦᱟ'
+sat_dict['common']['view'] = 'ᱧᱮᱞ'
+sat_dict['common']['search'] = 'ᱯᱟᱱᱛᱷᱮ'
+sat_dict['common']['submit'] = 'ᱮᱢ'
+sat_dict['common']['confirm'] = 'ᱴᱷᱟᱹᱣᱠᱟᱹ'
+sat_dict['common']['yes'] = 'ᱦᱮᱸ'
+sat_dict['common']['no'] = 'ᱵᱟᱝ'
+sat_dict['common']['state'] = 'ᱯᱚᱱᱚᱛ'
+sat_dict['common']['district'] = 'ᱡᱤᱞᱟᱹ'
+sat_dict['common']['village'] = 'ᱟᱹᱛᱩ'
+REGIONAL_SPECIAL_TRANSLATIONS['sat'] = sat_dict
