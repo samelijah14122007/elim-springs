@@ -359,7 +359,7 @@ Run any additional backend services using the instructions and scripts present i
 ## 🔗 Project Resources
 
 - **GitHub Repository:** [ELIM SPRINGS](https://github.com/samelijah14122007/elim-springs)
-- **Project Demonstration Video:** Add the actual video URL when available.
+- **Project Demonstration Video:** https://youtu.be/4a1dhEXMaoM?si=TyKHgoPiTFd-niEF.
 - **Architecture / Technical Documentation:** Refer to the relevant documentation in this repository.
 - **Problem Statement:** PS-26015 — Smart India Hackathon 2026.
 
