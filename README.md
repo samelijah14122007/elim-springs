@@ -4,15 +4,15 @@
 
 An evidence-driven geospatial decision-support platform developed for **Smart India Hackathon 2026 — Problem Statement PS-26015**.
 
-ELIM SPRINGS connects real geo-coded field photographs, community voice reports, GIS layers, Earth observation data, and field verification to support watershed assessment and development decisions.
+ELIM SPRINGS connects real geo-coded field photographs, multilingual voice reports, GIS layers, Earth observation data, and field verification to support watershed assessment and development decisions.
 
 ---
 
 ## 📖 Project Overview
 
-Watershed development requires more than maps and field reports. Photographs, community observations, satellite-derived indicators, and field measurements need to be interpreted together to understand changing conditions at specific locations.
+Watershed development requires more than maps and field reports. Photographs, community observations, satellite-derived indicators, and field measurements need to be interpreted together to understand changing environmental conditions at specific locations.
 
-**ELIM SPRINGS bridges this gap** by connecting field evidence with geospatial context and environmental analysis.
+**ELIM SPRINGS bridges this gap** by connecting field evidence with geospatial context, environmental analysis, and structured case management.
 
 The platform is designed to help citizens, field workers, engineers, and administrators collect evidence, investigate watershed conditions, track cases, and prepare evidence-supported reports.
 
@@ -20,13 +20,15 @@ The platform is designed to help citizens, field workers, engineers, and adminis
 
 **What people report + what field evidence shows + where it happened + what geospatial data indicates + what field verification confirms = better watershed decisions.**
 
+---
+
 ## 🎯 Problem Statement
 
 **PS-26015 — Application of Geospatial Techniques for Visualization and Analysis to Interpret Geo-Coded Images to Enhance Watershed Development Outcomes.**
 
 ELIM SPRINGS addresses this challenge by linking geo-coded photographs with satellite observations, watershed boundaries, land-use information, vegetation indicators, water-resource information, drainage networks, and soil or land-degradation assessments.
 
-The objective is to transform field photographs from isolated documentation into spatially linked, traceable analytical evidence that can support watershed development decisions.
+The objective is to transform field photographs from isolated documentation into spatially linked, traceable analytical evidence that supports watershed development planning and decision-making.
 
 ---
 
@@ -35,14 +37,15 @@ The objective is to transform field photographs from isolated documentation into
 ### 🗺️ 1. Geospatial Intelligence
 
 - Interactive GIS maps with watershed and administrative context.
-- Geospatial visualization using Leaflet and relevant map layers.
+- Geospatial visualization using Leaflet and configured map layers.
 - Integration pathway for Indian geospatial resources, including Bhuvan / NRSC.
-- A scalable hierarchy from state and district to basin, watershed, micro-watershed, asset, and evidence.
+- Scalable geographical hierarchy: India → State / UT → District → Basin → Watershed → Micro-Watershed → Asset → Evidence.
 - Thematic visualization of land, vegetation, water, drainage, and watershed interventions.
+- Spatial comparison of observations and environmental indicators.
 
 ### 📸 2. Geo-Coded Field Evidence
 
-- Upload field photographs for evidence collection.
+- Upload real-world field photographs.
 - Camera-based image capture where the browser and device permit it.
 - EXIF metadata extraction when available.
 - GPS coordinates and timestamps recorded when supported by the image or capture workflow.
@@ -61,37 +64,117 @@ The objective is to transform field photographs from isolated documentation into
 - Drainage and water-body visualization.
 - Soil erosion and land-degradation risk assessment.
 - Visualization of watershed interventions alongside field evidence.
+- Support for analysing changes in reservoirs and water bodies across available observation periods.
 
 **Data transparency:** SRISHTI-DRISHTI is a target data source for PS-26015 alignment. Individual satellite services, datasets, and layers should be identified as live integrations, prototype data, or planned integrations according to their actual implementation.
 
-### 🎙️ 4. Multilingual Voice Reporting
+Historical water-level or reservoir comparisons must use dated, traceable observations. Satellite-derived water extent is not the same as a directly measured reservoir water level.
 
-- Voice-based field reporting.
-- Indian-language interaction designed for citizens and field workers.
-- Bhashini integration pathway for supported speech and language services.
-- Speech-to-text and structured field-report generation where supported.
-- Text-to-speech assistance where available.
-- OCR-assisted conversion of image text into structured information.
+### 🎙️ 4. Multilingual Voice Reporting — 23 Indian Languages
 
-Language availability and service execution depend on the implemented pipeline, configuration, and connected APIs.
+ELIM SPRINGS is designed to make watershed reporting more accessible to citizens and field workers through multilingual interaction, voice reporting, speech processing, and structured field reports.
 
-### 🤖 5. AI Geo Agent & Knowledge Assistance
+#### Supported Language Interface
+
+| No. | Language | No. | Language |
+|---:|---|---:|---|
+| 1 | Assamese | 13 | Manipuri (Meitei) |
+| 2 | Bengali | 14 | Marathi |
+| 3 | Bodo | 15 | Nepali |
+| 4 | Dogri | 16 | Odia |
+| 5 | Gujarati | 17 | Punjabi |
+| 6 | Hindi | 18 | Sanskrit |
+| 7 | Kannada | 19 | Santali |
+| 8 | Kashmiri | 20 | Sindhi |
+| 9 | Konkani | 21 | Tamil |
+| 10 | Maithili | 22 | Telugu |
+| 11 | Malayalam | 23 | Urdu |
+| 12 | English |  |  |
+
+#### Voice and Language Capabilities
+
+- 🎤 Voice-based field reporting in supported languages.
+- 🔄 Speech recognition and language processing through configured services.
+- 🇮🇳 Bhashini integration for supported Indian-language services.
+- 📝 OCR-assisted extraction of text from field photographs and signboards.
+- 📋 Conversion of voice reports into structured watershed observations, where supported.
+- 🔊 Text-to-speech assistance for supported languages.
+- ↔️ Right-to-left interface support for applicable languages, including Urdu.
+- 📍 Linking reports to available location and field evidence.
+
+#### IVR / Voice Reporting Workflow
+
+```text
+Select Language
+      ↓
+Record Voice Report
+      ↓
+Speech Recognition / ASR
+      ↓
+Language Processing
+      ↓
+Structured Field Report
+      ↓
+Location & Evidence Linking
+      ↓
+Review and Field Verification
+```
+
+The application can use configured browser speech services or connected language APIs, depending on the implementation and service availability.
+
+**Important:** Language availability in the interface does not guarantee that every language has a working live speech-recognition, translation, or text-to-speech service. Actual capabilities depend on the configured integrations and device support.
+
+### 🔎 5. OCR & Evidence Extraction
+
+- Extract text from field photographs and signboards.
+- Assist in identifying work codes, scheme information, village names, and other visible text where readable.
+- Link extracted information to the corresponding evidence record.
+- Support evidence review through structured information.
+
+OCR results may contain recognition errors and should be reviewed before being treated as verified facts.
+
+### 🌱 6. Soil Erosion & Land-Degradation Analysis
+
+- Soil erosion risk assessment using available terrain, land-cover, and environmental information.
+- RUSLE-based soil-loss estimation where required factors are available.
+- Field measurements for gullies, erosion features, and relevant watershed structures.
+- Comparison of model-based risk with geo-coded field evidence.
+- Field verification before operational decisions.
+
+The RUSLE model is represented as:
+
+**A = R × K × LS × C × P**
+
+Where:
+
+- **A:** Estimated average soil loss.
+- **R:** Rainfall erosivity factor.
+- **K:** Soil erodibility factor.
+- **LS:** Slope length and steepness factor.
+- **C:** Cover-management factor.
+- **P:** Support-practice factor.
+
+Estimates depend on the quality, resolution, suitability, and calibration of input data. A single photograph cannot independently determine precise soil loss.
+
+### 🤖 7. AI Geo Agent & RAG Knowledge Assistance
 
 - AI-assisted synthesis of field reports, photographs, GIS context, and environmental indicators.
 - Retrieval-Augmented Generation (RAG) for consulting indexed technical documents and watershed guidelines.
 - Evidence-linked observations and possible interpretations.
 - Recommended field checks for investigating potential issues.
+- Support for structured explanations and reporting.
 - Human review before verification or action.
 
-The AI Geo Agent supports decision-making; it does not independently establish ground truth or replace field engineers.
+The AI Geo Agent assists decision-making; it does not independently establish ground truth or replace field engineers.
 
-### 📋 6. Evidence Chain & Case Management
+### 📋 8. Evidence Chain & Case Management
 
 - Connect reports, photographs, coordinates, OCR output, GIS context, and analysis.
 - Maintain traceable evidence records and SHA-256 integrity hashes.
 - Create cases from reported watershed issues.
 - Track evidence review, field verification, engineering review, and resolution.
 - Support report and Detailed Project Report (DPR) preparation.
+- Maintain a clear distinction between reported, model-derived, and field-verified findings.
 
 ---
 
@@ -103,23 +186,26 @@ ELIM SPRINGS connects field participation, evidence processing, geospatial analy
 flowchart TD
     A["Citizens / Field Workers / Engineers"]
     B["Field Input: Geo-Photos, Voice, GPS / EXIF"]
-    C["Evidence Ingestion: OCR, Metadata, SHA-256"]
+    C["Evidence Processing: OCR, Metadata, SHA-256"]
     D["Geospatial Foundation: GIS, Watersheds, Assets"]
     E["Earth Observation: Satellite / Thematic Layers"]
     F["Spatial Analytics: NDVI, NDWI, LULC, Change, Erosion"]
     G["AI Geo Agent + RAG Knowledge Base"]
     H["Evidence Chain and Case Management"]
-    I["Field Verification by Authorized Personnel"]
+    I["Authorized Field Verification"]
     J["Action, Reports and DPR"]
 
-    A --> B --> C --> D
+    A --> B
+    B --> C
+    C --> D
     D <--> E
     D --> F
     E --> F
     F --> G
     C --> H
     G --> H
-    H --> I --> J
+    H --> I
+    I --> J
 ```
 
 ### Architecture Principles
@@ -130,10 +216,11 @@ flowchart TD
 - **AI-assisted interpretation:** Use AI to support analysis, not invent physical observations.
 - **Human verification:** Require authorized field verification for operational decisions.
 - **Traceability:** Maintain evidence records and integrity hashes throughout the workflow.
+- **Modular design:** Keep user interfaces, data services, geospatial processing, AI services, and persistence logically separated.
 
 ---
 
-## 🔄 Operational Workflow
+## 🔄 End-to-End Operational Workflow
 
 1. **Report:** A citizen or field worker submits a report or voice observation.
 2. **Capture:** A photograph is uploaded or captured through a supported device camera.
@@ -156,6 +243,7 @@ flowchart TD
 | Application Backend | Laravel, according to the configured application architecture |
 | Database | Supabase PostgreSQL |
 | File Storage | Supabase Storage |
+| Authentication | Supabase Auth, where configured |
 | Indian Geospatial Resources | Bhuvan / NRSC, where integrated |
 | Earth Observation | SRISHTI-DRISHTI target integration and verified prototype EO sources |
 | OCR | Tesseract.js / configured OCR services |
@@ -163,9 +251,8 @@ flowchart TD
 | AI Assistance | AI Geo Agent and configured LLM services |
 | Knowledge Retrieval | RAG-based document retrieval |
 | Evidence Integrity | SHA-256 |
-| Authentication | Supabase Auth, where configured |
 
-*The table describes the reported and intended technology stack. Confirm the repository configuration before treating every listed integration as production-connected.*
+*This table describes the reported and intended stack. Verify the repository configuration before treating every listed integration as production-connected.*
 
 ---
 
@@ -313,11 +400,6 @@ Before contributing, review the repository structure and follow the existing cod
 
 ---
 
-## 📄 License
-
-Add the applicable license after deciding how the project should be distributed.
-
----
 
 **ELIM SPRINGS — Smart India Hackathon 2026**
 
